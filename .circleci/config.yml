@@ -110,7 +110,7 @@ jobs:
             eksctl create cluster --name capstone --region us-east-1 --zones us-east-1a,us-east-1b,us-east-1c,us-east-1d
             eksctl utils describe-stacks --region us-east-1 --cluster=capstone
             eksctl get cluster --name=capstone --region=us-east-1
-            
+
   deploy-cluster:
     executor: aws-eks/python3
     parameters:
@@ -128,6 +128,7 @@ jobs:
           get-rollout-status: true
           resource-file-path: deployment.yml
           resource-name: deployment/capstone
+          
   check-cluster:
     executor: aws-eks/python3
     parameters: 
