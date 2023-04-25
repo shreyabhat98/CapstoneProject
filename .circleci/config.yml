@@ -85,12 +85,12 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build -t capstone .
+            docker build -t yshreybhat/capstone:latest .
             docker images ls
             docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWD"
-            docker tag capstone yshreybhat/capstone:v1
+            docker tag capstone yshreybhat/capstone:latest
             docker images ls
-            docker push yshreybhat/capstone:v1
+            docker push yshreybhat/capstone:latest
             
   create-cluster:
     docker:
