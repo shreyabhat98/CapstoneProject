@@ -22,7 +22,7 @@ spec:
         app: capstone
     spec:
       containers:
-        - image: src1307/capstone:v1
+        - image: yshreybhat/capstone:latest
           imagePullPolicy: Always
           name: newimage
           ports:
