@@ -11,8 +11,7 @@ test:
 	#No tests yet
 
 lint:
-	./hadolint Dockerfile abc
-	pylint app.py
-	#pylint --disable=R,C,W1203 app.py
+	./hadolint Dockerfile 
+	pylint --disable=R,C,W1203 app.py
 
 all: install lint test
