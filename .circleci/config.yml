@@ -86,16 +86,13 @@ jobs:
           command: |
             docker build --tag=capstone .
             pwd
-            #cd ~/project/new_dockerfile
-            #docker build --tag=mytesting .
-            #sleep 30s
+          
             docker images ls
             docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWD"
             docker tag capstone src1307/capstone:v1
-            #docker tag mytesting src1307/mytesting:v1
-            #docker images ls
+            docker images ls
             docker push src1307/capstone:v1
-            #docker push src1307/mytesting:v1
+            
   create-cluster:
     docker:
       - image: python:3.7-alpine3.11
