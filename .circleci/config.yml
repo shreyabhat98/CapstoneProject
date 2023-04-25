@@ -85,7 +85,7 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build -t yshreybhat/capstone:latest .
+            docker build --tag=capstone .
             docker images ls
             docker login -u="$DOCKER_USER" -p="$DOCKER_PASSWD"
             docker tag capstone yshreybhat/capstone:latest
