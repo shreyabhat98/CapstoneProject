@@ -153,26 +153,6 @@ jobs:
             kubectl get nodes
             kubectl get all
 
-  set-loadbalancer:
-        executor: aws-eks/python3
-        parameters:
-          cluster-name:
-            description: |
-              capstonr
-            type: string
-        steps:
-          - checkout
-          - kubernetes/install
-          - aws-eks/update-kubeconfig-with-authenticator:
-              cluster-name: << parameters.cluster-name >>
-              install-kubectl: true
-          - kubernetes/create-or-update-resource:            
-              resource-file-path: loadbalancer.yml
-              resource-name: deployment/capstone              
-          - run:
-              name: Wait for LB to be ready
-              command: |         
-                kubectl get service/capstone-service-loadbalancer 
 workflows:
   default:
       jobs:
@@ -187,7 +167,5 @@ workflows:
         - check-cluster:
             cluster-name: capstone
             requires: [deploy-cluster]
-        - set-loadbalancer:
-            cluster-name: capstone
-            requires: [deploy-cluster]
-              
+       
+       
